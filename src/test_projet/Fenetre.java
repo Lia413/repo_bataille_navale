@@ -8,6 +8,8 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+// Fenetre
+
 public class Fenetre {
     private final Stage stage;
     private Button[][] tab_boutons;
