@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-public class Bateau {
+public abstract class Bateau {
     int taille;
     private int touchesRecues;
     protected BufferedImage imageComplete;
