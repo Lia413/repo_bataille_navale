@@ -8,7 +8,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-// Class Fenetre 
+// Class Fenetre BIS
 
 public class Fenetre {
     private final Stage stage;
