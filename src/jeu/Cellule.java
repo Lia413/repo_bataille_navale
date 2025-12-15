@@ -1,3 +1,6 @@
+
+package jeu;
+
 import java.awt.Dimension;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
