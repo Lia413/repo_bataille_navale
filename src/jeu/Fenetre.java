@@ -25,7 +25,8 @@ public class Fenetre {
     private TextField tftxt;
 
     // Plateau de jeu
-    private Plateau plateau;
+    private Plateau plateau1;
+    private Plateau plateau_adv;
     private final int taille;
     
     private ArrayList<Bateau> liste_Bat;
@@ -195,33 +196,83 @@ public class Fenetre {
         }
         return hb;
     }
+// Création plateau Canvas et HBox bateaux
+private void afficherGridEtBateaux() {
+    // Création du bouton
+    Button btn_valider = new Button("Valider");
+    btn_valider.setOnAction(e -> afficher2GridEtBateaux());
+    
+    //mettre une condition a valider que les bateaux soient placés
+    
+    // Création du plateau Canvas
+    plateau1 = new Plateau(400, 400);
+    
+    // Dessiner le plateau
+    Label l1 = new Label("Mon plateau");
+    GraphicsContext gc1 = plateau1.getGraphicsContext2D();
+    plateau1.paint(gc1);
+    
+    // Cadre autour du plateau
+    VBox cadre = new VBox(5, l1, plateau1);
+    cadre.setAlignment(Pos.CENTER);
+    cadre.setStyle("-fx-padding: 10; -fx-border-color: black; -fx-border-width: 3; -fx-border-style: solid;");
+    
+    // Conteneur principal
+    VBox root = new VBox(20);
+    root.setAlignment(Pos.TOP_CENTER);
+    root.setPadding(new Insets(10));
+    root.setStyle("-fx-background-color: #ecf0f1;");
+    
+    // Titre
+    Label titre = new Label("BATAILLE NAVALE");
+    titre.setStyle("-fx-font-size: 32px; -fx-font-weight: bold;");
+    
+    // Ajout des éléments
+    root.getChildren().addAll(titre, cadre, creerBateau(), btn_valider);
+    
+    Scene scene = new Scene(root, 800, 700);
+    stage.setScene(scene);
+}
 
-    // Création plateau Canvas et HBox bateaux
-    private void afficherGridEtBateaux() {
-        // Création du plateau Canvas
-        plateau = new Plateau(400, 400);
-        
-        // Dessiner le plateau
-        GraphicsContext gc = plateau.getGraphicsContext2D();
-        plateau.paint(gc);
-        
-        // Cadre autour du plateau
-        StackPane cadre = new StackPane(plateau);
-        cadre.setStyle("-fx-padding: 10; -fx-border-color: black; -fx-border-width: 3; -fx-border-style: solid;");
-
-        VBox root = new VBox(20);
-        root.setAlignment(Pos.TOP_CENTER);
-        root.setPadding(new Insets(10));
-        root.setStyle("-fx-background-color: #ecf0f1;");
-
-        Label titre = new Label("BATAILLE NAVALE");
-        titre.setStyle("-fx-font-size: 32px; -fx-font-weight: bold;");
-
-        root.getChildren().addAll(titre, cadre, creerBateau());
-
-        Scene scene = new Scene(root, 800, 700);
-        stage.setScene(scene);
-    }
+private void afficher2GridEtBateaux() {
+    // Dessiner le plateau adversaire
+    Label l2 = new Label("Plateau adversaire");
+    plateau_adv = new Plateau(400, 400);
+    GraphicsContext gc_adv = plateau_adv.getGraphicsContext2D();
+    plateau_adv.paint(gc_adv);
+    
+    // Dessiner mon plateau
+    Label l1 = new Label("Mon plateau");
+    GraphicsContext gc1 = plateau1.getGraphicsContext2D();
+    plateau1.paint(gc1);
+    
+    // Organisation des plateaux côte à côte
+    VBox plateauGauche = new VBox(5, l1, plateau1);
+    plateauGauche.setAlignment(Pos.CENTER);
+    
+    VBox plateauDroit = new VBox(5, l2, plateau_adv);
+    plateauDroit.setAlignment(Pos.CENTER);
+    
+    HBox cadre = new HBox(30, plateauGauche, plateauDroit);
+    cadre.setAlignment(Pos.CENTER);
+    cadre.setStyle("-fx-padding: 10; -fx-border-color: black; -fx-border-width: 3; -fx-border-style: solid;");
+    
+    // Conteneur principal
+    VBox root = new VBox(20);
+    root.setAlignment(Pos.TOP_CENTER);
+    root.setPadding(new Insets(10));
+    root.setStyle("-fx-background-color: #ecf0f1;");
+    
+    // Titre
+    Label titre = new Label("BATAILLE NAVALE");
+    titre.setStyle("-fx-font-size: 32px; -fx-font-weight: bold;");
+    
+    // Ajout des éléments
+    root.getChildren().addAll(titre, cadre, creerBateau());
+    
+    Scene scene = new Scene(root, 1000, 700);
+    stage.setScene(scene);
+}
 
     private boolean interdit(String txt) {
         for (char c : txt.toCharArray()) {
@@ -237,7 +288,7 @@ public class Fenetre {
     
     // Getters
     public Plateau getPlateau() {
-        return plateau;
+        return plateau1;
     }
     
     public TextField getTfnom() {

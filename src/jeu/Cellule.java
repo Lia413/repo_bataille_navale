@@ -32,7 +32,7 @@ public class Cellule {
         gc.strokeRect(x * ech.width, y * ech.height, ech.width, ech.height);
     }
     
-    public boolean isOccupe() {
+    public boolean getOccupe() {
         return occupe;
     }
     
@@ -40,7 +40,7 @@ public class Cellule {
         this.occupe = occupe;
     }
     
-    public boolean isTouche() {
+    public boolean getTouche() {
         return touche;
     }
     

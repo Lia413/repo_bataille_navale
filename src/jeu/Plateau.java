@@ -62,7 +62,7 @@ public class Plateau extends Canvas {
         do {
             x = random.nextInt(tab.length);
             y = random.nextInt(tab[0].length);
-        } while (tab[x][y].isOccupe());
+        } while (tab[x][y].getOccupe());
         
         return tab[x][y];
     }
@@ -73,7 +73,7 @@ public class Plateau extends Canvas {
         do {
             x = random.nextInt(tab.length);
             y = random.nextInt(tab[0].length);
-        } while (tab[x][y].isOccupe());
+        } while (tab[x][y].getOccupe());
         
         return new int[]{x, y};
     }
