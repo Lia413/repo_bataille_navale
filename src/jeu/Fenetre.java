@@ -268,7 +268,7 @@ private void afficher2GridEtBateaux() {
     titre.setStyle("-fx-font-size: 32px; -fx-font-weight: bold;");
     
     // Ajout des éléments
-    root.getChildren().addAll(titre, cadre, creerBateau());
+    root.getChildren().addAll(titre, cadre);
     
     Scene scene = new Scene(root, 1000, 700);
     stage.setScene(scene);
