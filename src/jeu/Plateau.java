@@ -6,11 +6,10 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-
 public class Plateau extends Canvas {
     Cellule[][] tab = new Cellule[10][10];
     Dimension ech = new Dimension();
-    private Random random = new Random(); // Instanciation de Random
+    private Random random = new Random();
     
     public Plateau(int largeur, int hauteur) {
         super(largeur, hauteur);
@@ -23,21 +22,25 @@ public class Plateau extends Canvas {
     }
     
     public void calculeEchelle() {
-        // largeur 1 case = largeur zone de dessin / largeur de la grille
         ech.width = (int)(getWidth() / tab.length);
-        // hauteur 1 case = hauteur zone de dessin / hauteur de la grille
         ech.height = (int)(getHeight() / tab[0].length);
     }
     
+    // Dessine le plateau (affiche les bateaux)
     public void paint(GraphicsContext gc) {
+        paint(gc, true);
+    }
+    
+    // Dessine le plateau ou pas
+    public void paint(GraphicsContext gc, boolean afficherBateaux) {
         calculeEchelle();
-        // Met la couleur
         gc.setFill(Color.CYAN);
         gc.fillRect(0, 0, getWidth(), getHeight());
+        
         // Dessine les cellules
         for (int x = 0; x < tab.length; x++) {
             for (int y = 0; y < tab[x].length; y++) {
-                tab[x][y].dessineToi(gc, x, y, ech);
+                tab[x][y].dessineToi(gc, x, y, ech, afficherBateaux);
             }
         }
     }

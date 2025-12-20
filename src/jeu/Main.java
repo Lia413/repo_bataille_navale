@@ -25,7 +25,8 @@ public class Main extends Application {
         liste_Bat.add(porte_a);
         liste_Bat.add(croiseur);
         liste_Bat.add(c_torp);
-        liste_Bat.add(sous_m);
+        liste_Bat.add(c_torp);
+        /*liste_Bat.add(sous_m);*/
         liste_Bat.add(torp);
         
         // Création de la fenêtre principale
